@@ -1,17 +1,49 @@
-import React from 'react';
+//Import Area
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+
+//You can define react componet using 2 Techniques
+//1 Function Component
+function A(props){//we will recive a formal arguments
+  let name="Sujal";//Data is availbe within the component
+  //Every function return something
+  let sn2="Torecha"
+  return <h1> A {name} {props.surname} - <B surname={sn2}/></h1>
+}
+
+
+//2 Class Component
+//Class Child Extends Parents()
+class B extends React.Component{//OOPS
+  //Properties
+  name="Puspendra"
+
+  //Constructor
+
+  //Meathod
+  //In order to acces any member of the class u have to use THIS keywoerd
+  render(){
+    return <span>B - {this.name} {this.props.surname} <C>Sharma</C></span>
+  }
+}
+
+
+//ES6 2015 FAT ARROW FUNCTIOM
+
+let C = (props)=>{
+  let name = "Vishnu"
+  console.log("hi",props.children)
+  return <span>C - {name} {props.children} </span>
+}
+
+
+
+
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+let sn1="Dedaniya"
+root.render(<A surname={sn1}/>);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
